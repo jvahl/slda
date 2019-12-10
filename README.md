@@ -58,4 +58,4 @@ This may take as long as 15 minutes, so be patient.
 
 This code is open source under the MIT license.
 
-This repository is based on https://github.com/Savvysherpa/slda. The goal of this fork is to fix installation issues and make the package accessible to the broader public again.
+This repository is forked from https://github.com/Savvysherpa/slda. The goal of this fork is to fix installation issues and make the package accessible to the broader public again.
