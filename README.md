@@ -58,5 +58,4 @@ This may take as long as 15 minutes, so be patient.
 
 This code is open source under the MIT license.
 
-Many thanks to [Allen Riddell](https://github.com/ariddell) and his [LDA
-library](https://github.com/ariddell/lda) for inspiration (and code :)
+This repository is based on https://github.com/Savvysherpa/slda. The goal of this fork is to fix installation issues and make the package accessible to the broader public again.
