@@ -13,73 +13,37 @@ various supervised LDAs:
 
 ## Installation
 
-### The easy way
-Use the conda-forge version [here](https://github.com/conda-forge/slda-feedstock).
+This package only works with Python <3.6.x. Conda users with newer Python versions can create and activate a Python 3.6 environment via
 
-### The hard way...
-(Kept for posterity's sake.)
+```bash
+$ conda create -n py36 python=3.6 -y
+$ conda activate py36
+```
 
 ### Dependencies
 
 #### GNU Scientific Library
 This module depends on [GSL](http://www.gnu.org/software/gsl/), please install
-it. For macosx users using [homebrew](http://brew.sh/), this is as simple as
+it. For ubuntu users this is as simple as
 ```bash
-$ brew install gsl
-```
-
-#### pypolyagamma-3 and gcc
-This package depends on [pypolyagamma-3](https://github.com/Savvysherpa/pypolyagamma),
-which is a bit of a pain because `pypolyagamma-3` requies a C/C++ compiler with
-[OpenMP](http://openmp.org/) support. Unfortunately for macosx users, Apple's native
-compiler, clang, does not ship with that support, so you need to install and
-use one that does. For macosx users using [homebrew](http://brew.sh/),
-this is as simple as:
- ```bash
- $ brew install gcc --without-multilib
- ```
-This will install a version of `gcc` with OpenMP support. However, Apple makes
-things worse by aliasing gcc to point to clang! So you need to explicitly tell
-the shell which gcc compiler to use. As of the writing of this README, brew
-installs major version 6 of gcc, and as a result will create a binary called
-gcc-6 in your path. So export the following to your shell
- ```bash
- $ export CC=gcc-6 CXX=g++-6
- ```
-or you can prefix the commands below with `CC=gcc-6 CXX=g++-6`.
-
-As a result of this export, it may turn out that your shell cannot find the
-libraries associated with gcc. If this is the case, specify the path to your gcc
-library in the environment variable `DYLD_LIBRARY_PATH`. For example, if
-you used `brew` to install gcc as above, then this is probably the right thing
-to do:
-```bash
-$ export DYLD_LIBRARY_PATH=/usr/local/Cellar/gcc/6.1.0/lib/gcc/6/
+$ sudo apt-get install libgsl-dev -y
 ```
 
 ### Instructions
 
-#### Conda environment
-
-First create the conda environment by running
- ```bash
- $ conda env create
- ```
-This will install a conda environment called `slda`, defined in
-`environment.yml`, that contains all the dependencies. Activate it by running
- ```bash
- $ source activate slda
- ```
-Next we need to compile the C code in this repository. To do this, run
-```bash
-$ python setup.py build_ext --inplace
-```
 
 #### pip install slda
 
 If you want slda installed in your environment, run:
 ```bash
-$ pip install .
+$ pip install git+https://github.com/jvahl/slda.git
+```
+
+## fix temporary issue with pypolyagamma and scipy
+
+Pypolyagamma currently depends on an older version of scipy. To downgrade scipy, run
+```bash
+$ pip3 install --upgrade scipy==1.2.1
 ```
 
 ## Tests
