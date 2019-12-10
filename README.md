@@ -39,7 +39,7 @@ If you want slda installed in your environment, run:
 $ pip install git+https://github.com/jvahl/slda.git
 ```
 
-## fix temporary issue with pypolyagamma and scipy
+#### fix temporary issue with pypolyagamma and scipy
 
 This package depends on pypolyagamma, which in turn depends on an older version of scipy. To downgrade scipy, run
 ```bash
