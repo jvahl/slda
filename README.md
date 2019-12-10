@@ -41,7 +41,7 @@ $ pip install git+https://github.com/jvahl/slda.git
 
 ## fix temporary issue with pypolyagamma and scipy
 
-Pypolyagamma currently depends on an older version of scipy. To downgrade scipy, run
+This package depends on pypolyagamma, which in turn depends on an older version of scipy. To downgrade scipy, run
 ```bash
 $ pip3 install --upgrade scipy==1.2.1
 ```
