@@ -13,7 +13,7 @@ various supervised LDAs:
 
 ## Installation
 
-This package only works with Python <3.6.x. Conda users with newer Python versions can create and activate a Python 3.6 environment via
+This package only works with Python <=3.6.x. Conda users with newer Python versions can create and activate a Python 3.6 environment via
 
 ```bash
 $ conda create -n py36 python=3.6 -y
