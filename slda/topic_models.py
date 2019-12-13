@@ -72,7 +72,7 @@ class TopicModelBase(BaseEstimator, TransformerMixin):
         self.fit(X)
         return self.theta
 
-    def transform(self, X, max_iter=20, tol=1e-16):
+    def transform(self, X, max_iter=20, tol=1e-16, show_progress=False):
         """
         Estimate the topic distributions of new documents given the fit model.
         """
@@ -84,7 +84,7 @@ class TopicModelBase(BaseEstimator, TransformerMixin):
         doc_lookup, term_lookup = self._create_lookups(X)
         return iterated_pseudo_counts(doc_lookup, term_lookup, n_docs,
                                       self.alpha, self.beta, self.phi,
-                                      max_iter, tol)
+                                      max_iter, tol, show_progress)
 
 
 class LDA(TopicModelBase):
