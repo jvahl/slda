@@ -19,7 +19,7 @@ from cython_gsl cimport (gsl_sf_lngamma as lngamma, gsl_sf_exp as exp,
                          gsl_rng_uniform, gsl_rng_uniform_int,
                          gsl_ran_gaussian as gaussian)
 from pypolyagamma import PyPolyaGamma
-
+from tqdm import tqdm
 
 # we choose this number since it is a large prime
 cdef unsigned int n_rands = 1000003
@@ -302,7 +302,7 @@ def estimate_matrix(int[:, :] counts, double[:] psuedo_counts, int n_things):
 
 def iterated_pseudo_counts(doc_lookup, term_lookup, int n_docs,
                            double[:] alpha, double[:] beta, double[:, :] phi,
-                           int max_iter, double tol):
+                           int max_iter, double tol, show_progress=False):
     """
     Estimate the topic distributions of new documents using the
     iterated pseudo-counts method mentioned in Wallach et al. (2009) and
@@ -317,7 +317,9 @@ def iterated_pseudo_counts(doc_lookup, term_lookup, int n_docs,
         double[::1] q_sum
         double[:, ::1] q, q_new
         double[:, ::1] theta = np.empty((n_docs, n_topics), dtype=np.float64, order='C')
-    for d in range(n_docs):
+    
+    doc_range = tqdm(range(n_docs),desc='docs') if show_progress else range(n_docs)
+    for d in doc_range:
         term_lookup_d = np.ascontiguousarray(term_lookup[doc_lookup == d])
         n_tokens_d = term_lookup_d.shape[0]
         # initialize proposal distribution q
