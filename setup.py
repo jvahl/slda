@@ -43,6 +43,7 @@ setup(
         'pytest',
         'scikit-learn',
         'scipy',
+        'tqdm',
     ],
     classifiers=[
         'Intended Audience :: Science/Research',
