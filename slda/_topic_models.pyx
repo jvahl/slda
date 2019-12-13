@@ -302,7 +302,7 @@ def estimate_matrix(int[:, :] counts, double[:] psuedo_counts, int n_things):
 
 def iterated_pseudo_counts(doc_lookup, term_lookup, int n_docs,
                            double[:] alpha, double[:] beta, double[:, :] phi,
-                           int max_iter, double tol, show_progress=False):
+                           int max_iter, double tol, bint show_progress):
     """
     Estimate the topic distributions of new documents using the
     iterated pseudo-counts method mentioned in Wallach et al. (2009) and
